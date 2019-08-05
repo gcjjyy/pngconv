@@ -39,7 +39,7 @@ fn main() -> std::io::Result<()> {
     let mut output = std::fs::File::create(&args[2])?;
 
     write!(&mut output, "#include <stdint.h>\n\n")?;
-    write!(&mut output, "const uint8_t {}[{}] = {{\n", v_name[0], info.buffer_size() + 56)?; // 56 means the header size
+    write!(&mut output, "const uint8_t {}[{}] = {{\n", v_name[0], (info.width * info.height * 3) + 56)?; // 56 means the header size
 
     // Write header
     write!(&mut output, "\t0x00, 0x00, 0x00, 0x00, // uint32_t id\n")?;
